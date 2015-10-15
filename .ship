@@ -1,0 +1,1 @@
+npm run deploy && cp dist/rules.js ~/projects/notifilter-frontend/app/assets/javascripts/
