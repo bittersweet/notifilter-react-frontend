@@ -21,18 +21,18 @@ var RuleForm = React.createClass({
     const { key, type, setting, value } = this.props.rule;
 
     return (
-      <div>
+      <div className="rule">
         <select ref="key" value={key} onChange={this.handleChange}>
           <option value="active">active</option>
           <option value="user_role">user_role</option>
         </select>
-        <br />
+
         <select ref="type" value={type} onChange={this.handleChange}>
           <option value="boolean">boolean</option>
           <option value="string">string</option>
           <option value="number">number</option>
         </select>
-        <br />
+
         <select ref="setting" value={setting} onChange={this.handleChange}>
           <option value=""></option>
           <option value="eq">eq</option>
@@ -40,9 +40,8 @@ var RuleForm = React.createClass({
           <option value="lt">lt</option>
           <option value="noteq">noteq</option>
         </select>
-        <br />
+
         <input type="text" ref="value" value={value} onChange={this.handleChange} placeholder="Value" />
-        <br />
       </div>
     );
   }
