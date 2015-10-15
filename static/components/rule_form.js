@@ -4,14 +4,7 @@ import store from './../store';
 
 var RuleForm = React.createClass({
   getInitialState: function() {
-    
-    var rule = this.props.rule;
-    return {
-      key: rule.key,
-      type: rule.type,
-      setting: rule.setting,
-      value: rule.value,
-    };
+    return this.props.rule;
   },
 
   handleChange: function(event) {
