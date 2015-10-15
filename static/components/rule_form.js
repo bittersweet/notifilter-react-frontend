@@ -10,11 +10,6 @@ var RuleForm = React.createClass({
     };
   },
 
-  updateRule: function(state) {
-    var json = JSON.stringify(state);
-    this.refs.rulesOutput.value = json;
-  },
-
   handleChange: function(event) {
     var newState = {
       key: this.refs.key.value,
@@ -23,7 +18,6 @@ var RuleForm = React.createClass({
       value: this.refs.value.value,
     };
     this.setState(newState);
-    this.updateRule(newState);
   },
 
   render: function() {
@@ -34,8 +28,6 @@ var RuleForm = React.createClass({
 
     return (
       <div>
-        <textarea ref="rulesOutput" rows="10" cols="60" />
-        <br />
         <select ref="key" value={key} onChange={this.handleChange}>
           <option value="active">active</option>
           <option value="user_role">user_role</option>
