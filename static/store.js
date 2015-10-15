@@ -17,6 +17,12 @@ function counter(state = [], action) {
         value: 'admin',
       }];
 
+  case 'REMOVE_RULE':
+    return [
+      ...state.slice(0, action.index),
+      ...state.slice(action.index + 1)
+    ];
+
   default:
     return state;
   }

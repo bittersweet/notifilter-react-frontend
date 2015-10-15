@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RemoveRule from './remove_rule';
+
 import store from './../store';
 
 var RuleForm = React.createClass({
@@ -18,6 +20,8 @@ var RuleForm = React.createClass({
 
     return (
       <div className="rule">
+        <RemoveRule index={this.props.index} actions={this.props.actions} />
+
         <select ref="key" value={key} onChange={this.handleChange}>
           <option value="active">active</option>
           <option value="user_role">user_role</option>
