@@ -9,11 +9,9 @@ var App = React.createClass({
   render: function() {
     const { dispatch, rules } = this.props;
 
-    var index = 0;
-    var ruleElements = rules.map(function(rule) {
-      index++
+    var ruleElements = rules.map(function(rule, i) {
       return (
-        <RuleForm rule={rule} index={index}/>
+        <RuleForm rule={rule} index={i}/>
       )
     });
     console.log('App props', rules);

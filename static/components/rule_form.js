@@ -12,9 +12,13 @@ var RuleForm = React.createClass({
       value: this.refs.value.value,
     };
     var rule = newState;
-    store.dispatch({ type: 'UPDATE_RULE', index: 0, rule: rule });
+    store.dispatch({ type: 'UPDATE_RULE', index: this.props.index, rule: rule });
 
     this.setState(newState);
+  },
+
+  addRule: function() {
+    store.dispatch({ type: 'ADD_RULE' });
   },
 
   render: function() {
@@ -43,6 +47,7 @@ var RuleForm = React.createClass({
         <br />
         <input type="text" ref="value" value={value} onChange={this.handleChange} placeholder="Value" />
         <br />
+        <a href="#" onClick={this.addRule}>Add Rule</a>
       </div>
     );
   }
