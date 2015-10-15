@@ -2,9 +2,10 @@ import React from 'react';
 
 var AddRule = React.createClass({
   render: function() {
+    const { actions } = this.props;
     return (
       <div>
-        <a href="#" onClick={() => this.props.onAddRule('test')}>Add Rule</a>
+        <a href="#" onClick={actions.addRule2}>Add Rule</a>
       </div>
     );
   }

@@ -6,32 +6,31 @@ import DebugOutput from './components/debug_output';
 import RuleForm from './components/rule_form';
 import AddRule from './components/add_rule';
 
-import { addRule } from './actions';
+import { bindActionCreators } from 'redux';
+import * as RuleActions from './actions';
 
 var App = React.createClass({
   render: function() {
     const { dispatch, rules } = this.props;
+    const actions = bindActionCreators(RuleActions, dispatch);
 
     var ruleElements = rules.map(function(rule, i) {
       return (
         <RuleForm rule={rule} index={i}/>
       )
     });
-    console.log('App props', rules);
+
     return (
       <div>
         <DebugOutput rules={rules} />
         {ruleElements}
-        <AddRule onAddRule={text =>
-          dispatch(addRule(text))
-        } />
+        <AddRule actions={actions} />
       </div>
     );
   }
 });
 
 function select(state) {
-  console.log('select state');
   return {
     rules: state
   };
