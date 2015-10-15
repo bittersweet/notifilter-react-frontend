@@ -12,6 +12,6 @@ export const ADD_RULE = 'ADD_RULE';
  * action creators
  */
 
-export function addRule2() {
+export function addRule() {
   return { type: ADD_RULE };
 }

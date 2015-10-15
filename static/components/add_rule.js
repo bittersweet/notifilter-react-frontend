@@ -5,7 +5,7 @@ var AddRule = React.createClass({
     const { actions } = this.props;
     return (
       <div>
-        <a href="#" onClick={actions.addRule2}>Add Rule</a>
+        <a href="#" onClick={actions.addRule}>Add Rule</a>
       </div>
     );
   }
