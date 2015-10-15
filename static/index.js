@@ -6,6 +6,15 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
 
+var rule = {
+  key: 'user_role',
+  type: 'string',
+  setting: 'noteq',
+  value: 'admin',
+};
+
+store.dispatch({ type: 'UPDATE_RULE', index: 0, rule: rule });
+
 let rootElement = document.getElementById('content');
 ReactDOM.render(
   <Provider store={store}>
