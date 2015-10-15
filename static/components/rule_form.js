@@ -4,17 +4,13 @@ import store from './../store';
 
 var RuleForm = React.createClass({
   handleChange: function(event) {
-    console.log('handleChange!');
-    var newState = {
+    var rule = {
       key: this.refs.key.value,
       type: this.refs.type.value,
       setting: this.refs.setting.value,
       value: this.refs.value.value,
     };
-    var rule = newState;
     store.dispatch({ type: 'UPDATE_RULE', index: this.props.index, rule: rule });
-
-    this.setState(newState);
   },
 
   render: function() {
