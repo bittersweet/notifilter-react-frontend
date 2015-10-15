@@ -4,8 +4,8 @@ import store from './../store';
 
 var DebugOutput = React.createClass({
   render: function() {
-    console.log('state from debug', store.getState());
-    var text = JSON.stringify(store.getState());
+    var rules = this.props.rules;
+    var text = JSON.stringify(rules);
     console.log('text: ', text);
     return (
       <div>

@@ -1,27 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import store from './store';
-
-store.dispatch({ type: 'ADD_RULE', index: 0, rule: {name: 'mark1'} });
-store.dispatch({ type: 'ADD_RULE', index: 1, rule: {name: 'mark123'} });
-store.dispatch({ type: 'ADD_RULE', index: 2, rule: {name: 'mark456'} });
+import { connect } from 'react-redux';
 
 import DebugOutput from './components/debug_output';
 import RuleForm from './components/rule_form';
 
 var App = React.createClass({
   render: function() {
+    console.log('App props', this.props);
     return (
       <div>
-        <DebugOutput />
+        <DebugOutput rules={this.props.rules} />
         <RuleForm />
       </div>
     );
   }
 });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('content')
-);
+// module.exports = App;
+
+function select(state) {
+  return {
+    rules: state
+  };
+}
+
+export default connect(select)(App);
