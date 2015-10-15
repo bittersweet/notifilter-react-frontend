@@ -3,10 +3,6 @@ import React from 'react';
 import store from './../store';
 
 var RuleForm = React.createClass({
-  getInitialState: function() {
-    return this.props.rule;
-  },
-
   handleChange: function(event) {
     console.log('handleChange!');
     var newState = {
@@ -22,10 +18,7 @@ var RuleForm = React.createClass({
   },
 
   render: function() {
-    var key = this.state.key;
-    var type = this.state.type
-    var setting = this.state.setting;
-    var value = this.state.value;
+    const { key, type, setting, value } = this.props.rule;
 
     return (
       <div>
