@@ -9,12 +9,12 @@ var RemoveRule = React.createClass({
   render: function() {
     const { actions, index } = this.props;
     return (
-      <a className="removeRule" href='#' onClick={e => {
+      <button className="removeRule" href='#' onClick={e => {
         e.preventDefault();
         actions.removeRule(index);
       }}>
         x
-      </a>
+      </button>
     );
   }
 });
