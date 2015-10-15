@@ -21,7 +21,7 @@ var RuleForm = React.createClass({
       value: this.refs.value.value,
     };
     var rule = newState;
-    store.dispatch({ type: 'UPDATE_RULE', index: 3, rule: rule });
+    store.dispatch({ type: 'UPDATE_RULE', index: 0, rule: rule });
 
     this.setState(newState);
   },

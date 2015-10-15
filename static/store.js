@@ -3,7 +3,10 @@ import { createStore } from 'redux';
 function counter(state = [], action) {
   switch (action.type) {
   case 'UPDATE_RULE':
-    return Object.assign({}, state, { [action.index]: action.rule });
+  var newArr = [state];
+  newArr[action.index] = action.rule;
+  return newArr;
+  return [...state, action.rule];
   default:
     return state;
   }
