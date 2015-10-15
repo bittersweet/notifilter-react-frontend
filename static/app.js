@@ -7,19 +7,20 @@ import RuleForm from './components/rule_form';
 
 var App = React.createClass({
   render: function() {
-    console.log('App props', this.props);
+    const { dispatch, rules } = this.props;
+
+    console.log('App props', rules);
     return (
       <div>
-        <DebugOutput rules={this.props.rules} />
+        <DebugOutput rules={rules} />
         <RuleForm />
       </div>
     );
   }
 });
 
-// module.exports = App;
-
 function select(state) {
+  console.log('select state');
   return {
     rules: state
   };
