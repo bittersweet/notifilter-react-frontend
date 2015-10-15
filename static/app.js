@@ -16,7 +16,7 @@ var App = React.createClass({
 
     var ruleElements = rules.map(function(rule, i) {
       return (
-        <RuleForm rule={rule} index={i}/>
+        <RuleForm key={i} rule={rule} index={i}/>
       )
     });
 
