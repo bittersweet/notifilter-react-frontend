@@ -4,32 +4,30 @@ import ReactDOM from 'react-dom';
 var RuleForm = React.createClass({
   getInitialState: function() {
     return {
-      selected: 'A',
-      value: 'Hello',
+      key: '',
+      type: '',
+      setting: '',
+      value: '',
     };
   },
 
-  updateRule: function() {
-    console.log(this.state);
+  updateRule: function(state) {
+    var json = JSON.stringify(state);
+    this.refs.rulesOutput.value = json;
   },
 
-  handleSelect: function(event) {
-    console.log('ref', this.refs.value.value);
-    var value = event.target.value;
-    console.log('select', value);
-    this.setState({selected: value});
-    this.updateRule();
-  },
   handleChange: function(event) {
-
-    var value = event.target.value;
-    console.log('value', value);
-    this.setState({value: value});
-    this.updateRule();
+    var newState = {
+      key: this.refs.key.value,
+      type: this.refs.type.value,
+      setting: this.refs.setting.value,
+      value: this.refs.value.value,
+    };
+    this.setState(newState);
+    this.updateRule(newState);
   },
 
   render: function() {
-    var ruleOutput = 'test';
     var key = this.state.key;
     var type = this.state.type
     var setting = this.state.setting;
@@ -37,20 +35,20 @@ var RuleForm = React.createClass({
 
     return (
       <div>
-        <textarea defaultValue={ruleOutput} rows="10" cols="60" />
+        <textarea ref="rulesOutput" rows="10" cols="60" />
         <br />
-        <select value={key} onChange={this.handleSelect}>
+        <select ref="key" value={key} onChange={this.handleChange}>
           <option value="active">active</option>
           <option value="user_role">user_role</option>
         </select>
         <br />
-        <select value={type} onChange={this.handleSelect}>
+        <select ref="type" value={type} onChange={this.handleChange}>
           <option value="boolean">boolean</option>
           <option value="string">string</option>
           <option value="number">number</option>
         </select>
         <br />
-        <select value={setting} onChange={this.handleSelect}>
+        <select ref="setting" value={setting} onChange={this.handleChange}>
           <option value=""></option>
           <option value="eq">eq</option>
           <option value="gt">gt</option>
@@ -58,8 +56,7 @@ var RuleForm = React.createClass({
           <option value="noteq">noteq</option>
         </select>
         <br />
-        <label>Value</label>
-        <input type="text" ref="value" value={value} onChange={this.handleChange} />
+        <input type="text" ref="value" value={value} onChange={this.handleChange} placeholder="Value" />
         <br />
       </div>
     );
