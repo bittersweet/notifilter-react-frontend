@@ -13,8 +13,6 @@ var rule = {
   value: 'admin',
 };
 
-store.dispatch({ type: 'UPDATE_RULE', index: 0, rule: rule });
-
 let rootElement = document.getElementById('content');
 ReactDOM.render(
   <Provider store={store}>

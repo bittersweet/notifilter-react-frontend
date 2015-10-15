@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-function counter(state = [], action) {
+function rules(state = [], action) {
   switch (action.type) {
   case 'UPDATE_RULE':
     return [
@@ -11,10 +11,10 @@ function counter(state = [], action) {
 
   case 'ADD_RULE':
       return [...state, {
-        key: 'user_role',
-        type: 'string',
-        setting: 'noteq',
-        value: 'admin',
+        key: '',
+        type: '',
+        setting: '',
+        value: '',
       }];
 
   case 'REMOVE_RULE':
@@ -28,7 +28,9 @@ function counter(state = [], action) {
   }
 }
 
-let store = createStore(counter);
+console.log('Initial rules:', window.RULES);
+
+let store = createStore(rules, window.RULES);
 store.subscribe(() =>
   console.log('subscribe', store.getState())
 );
