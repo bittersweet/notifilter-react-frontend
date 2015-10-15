@@ -17,10 +17,6 @@ var RuleForm = React.createClass({
     this.setState(newState);
   },
 
-  addRule: function() {
-    store.dispatch({ type: 'ADD_RULE' });
-  },
-
   render: function() {
     const { key, type, setting, value } = this.props.rule;
 
@@ -47,7 +43,6 @@ var RuleForm = React.createClass({
         <br />
         <input type="text" ref="value" value={value} onChange={this.handleChange} placeholder="Value" />
         <br />
-        <a href="#" onClick={this.addRule}>Add Rule</a>
       </div>
     );
   }

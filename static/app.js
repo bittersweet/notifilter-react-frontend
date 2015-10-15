@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import DebugOutput from './components/debug_output';
 import RuleForm from './components/rule_form';
+import AddRule from './components/add_rule';
+
+import { addRule } from './actions';
 
 var App = React.createClass({
   render: function() {
@@ -19,6 +22,9 @@ var App = React.createClass({
       <div>
         <DebugOutput rules={rules} />
         {ruleElements}
+        <AddRule onAddRule={text =>
+          dispatch(addRule(text))
+        } />
       </div>
     );
   }
