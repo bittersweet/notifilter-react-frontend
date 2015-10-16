@@ -18,13 +18,18 @@ var RuleForm = React.createClass({
   render: function() {
     const { key, type, setting, value } = this.props.rule;
 
+    var keys = window.KEYS.map(function(key, i) {
+      return (
+        <option key={i} value={key}>{key}</option>
+      );
+    });
+
     return (
       <div className="rule">
         <RemoveRule index={this.props.index} actions={this.props.actions} />
 
         <select ref="key" value={key} onChange={this.handleChange}>
-          <option value="active">active</option>
-          <option value="user_role">user_role</option>
+          {keys}
         </select>
 
         <select ref="type" value={type} onChange={this.handleChange}>
