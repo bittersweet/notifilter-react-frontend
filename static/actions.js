@@ -4,6 +4,7 @@
 
 export const ADD_RULE = 'ADD_RULE';
 export const REMOVE_RULE = 'REMOVE_RULE';
+export const UPDATE_TEMPLATE = 'UPDATE_TEMPLATE';
 
 /*
  * other constants
@@ -19,4 +20,8 @@ export function addRule() {
 
 export function removeRule(index) {
   return { type: REMOVE_RULE, index: index };
+}
+
+export function updateTemplate(template) {
+  return { type: UPDATE_TEMPLATE, template: template };
 }
