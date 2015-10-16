@@ -1,36 +1,46 @@
 import { createStore } from 'redux';
 
-function rules(state = [], action) {
+function notifier(state = {template: 'templ', rules: []}, action) {
   switch (action.type) {
   case 'UPDATE_RULE':
-    return [
-      ...state.slice(0, action.index),
-      Object.assign({}, state[action.index], action.rule),
-      ...state.slice(action.index + 1)
-    ];
+    return Object.assign({}, state, {
+      rules: [...state.rules.slice(0, action.index),
+        Object.assign({}, state.rules[action.index], action.rule),
+        ...state.rules.slice(action.index + 1)
+      ]
+    });
 
   case 'ADD_RULE':
-      return [...state, {
+    return Object.assign({}, state, {
+      rules: [...state.rules, {
         key: '',
         type: '',
         setting: '',
         value: '',
-      }];
+      }]
+    });
 
   case 'REMOVE_RULE':
-    return [
-      ...state.slice(0, action.index),
-      ...state.slice(action.index + 1)
-    ];
+    return Object.assign({}, state, {
+      rules: [state.rules.slice(0, action.index),
+        ...state.rules.slice(action.index + 1)
+      ]
+    });
+
+  case 'UPDATE_TEMPLATE':
+    return Object.assign({}, state, {
+        template: action.template
+      });
 
   default:
+    console.log("default state", state);
     return state;
   }
 }
 
 console.log('Initial rules:', window.RULES);
 
-let store = createStore(rules, window.RULES);
+let store = createStore(notifier, {template: '', rules: window.RULES});
 store.subscribe(() =>
   console.log('subscribe', store.getState())
 );
