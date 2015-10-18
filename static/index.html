@@ -9,11 +9,13 @@
     <script>
       window.options = {
         applications: ['test_app', 'production'],
+        eventNames: ['signup', 'comment'],
         keys: ["mark", "exists", "test"],
       };
 
       window.notifier = {
         application: 'test_app',
+        eventName: 'comment',
         template: 'preloaded template',
         rules: [{
           key: 'exists',
