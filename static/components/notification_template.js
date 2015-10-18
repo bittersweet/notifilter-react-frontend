@@ -12,6 +12,7 @@ var NotificationTemplate = React.createClass({
 
   render: function() {
     const { template } = this.props;
+    console.log('TEmplate', template);
 
     return (
       <div className="rule">

@@ -32,15 +32,17 @@ function notifier(state = {template: 'templ', rules: []}, action) {
         template: action.template
       });
 
+  case 'UPDATE_APPLICATION':
+    return Object.assign({}, state, {
+        application: action.application
+      });
   default:
     console.log("default state", state);
     return state;
   }
 }
 
-console.log('Initial rules:', window.RULES);
-
-let store = createStore(notifier, {template: '', rules: window.RULES});
+let store = createStore(notifier, window.notifier);
 store.subscribe(() =>
   console.log('subscribe', store.getState())
 );
