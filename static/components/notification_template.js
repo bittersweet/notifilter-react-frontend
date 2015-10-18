@@ -5,10 +5,9 @@ import store from './../store';
 var NotificationTemplate = React.createClass({
   handleChange: function(event) {
     event.preventDefault();
-    var template = this.refs.template.value;
-    // TODO: probably can simplify this as its duplicated with the function
-    // defined in actions.js
-    store.dispatch({ type: 'UPDATE_TEMPLATE', template: template });
+    const template = this.refs.template.value;
+    const { actions } = this.props;
+    actions.updateTemplate(template);
   },
 
   render: function() {
