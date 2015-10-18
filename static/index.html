@@ -7,13 +7,21 @@
   </head>
   <body>
     <script>
-    window.RULES = [{
-      key: 'exists',
-      type: 'string',
-      setting: 'eq',
-      value: 'test'
-    }];
-    window.KEYS = ["mark", "exists", "test"];
+      window.options = {
+        applications: ['test_app', 'production'],
+        keys: ["mark", "exists", "test"],
+      };
+
+      window.notifier = {
+        application: 'test_app',
+        template: 'preloaded template',
+        rules: [{
+          key: 'exists',
+          type: 'string',
+          setting: 'eq',
+          value: 'test'
+        }],
+      };
     </script>
     <div>
       <div id="content"></div>

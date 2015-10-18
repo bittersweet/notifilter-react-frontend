@@ -5,10 +5,8 @@
 export const ADD_RULE = 'ADD_RULE';
 export const REMOVE_RULE = 'REMOVE_RULE';
 export const UPDATE_TEMPLATE = 'UPDATE_TEMPLATE';
-
-/*
- * other constants
- */
+export const UPDATE_APPLICATION = 'UPDATE_APPLICATION';
+// TODO -- figure out how this stuff works, lol.
 
 /*
  * action creators
@@ -24,4 +22,8 @@ export function removeRule(index) {
 
 export function updateTemplate(template) {
   return { type: UPDATE_TEMPLATE, template: template };
+}
+
+export function updateApplication(application) {
+  return { type: UPDATE_APPLICATION, application: application };
 }

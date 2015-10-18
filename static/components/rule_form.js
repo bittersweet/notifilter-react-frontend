@@ -12,13 +12,14 @@ var RuleForm = React.createClass({
       setting: this.refs.setting.value,
       value: this.refs.value.value,
     };
+    // TODO -- simplify via actions.js
     store.dispatch({ type: 'UPDATE_RULE', index: this.props.index, rule: rule });
   },
 
   render: function() {
     const { key, type, setting, value } = this.props.rule;
 
-    var keys = window.KEYS.map(function(key, i) {
+    var keys = window.options.keys.map(function(key, i) {
       return (
         <option key={i} value={key}>{key}</option>
       );
