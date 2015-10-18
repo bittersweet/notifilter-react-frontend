@@ -8,6 +8,7 @@ import RuleForm from './components/rule_form';
 import AddRule from './components/add_rule';
 import SubmitButton from './components/submit_button';
 import ApplicationSelect from './components/application_select';
+import EventSelect from './components/event_select';
 
 import { bindActionCreators } from 'redux';
 import * as RuleActions from './actions';
@@ -16,7 +17,7 @@ var App = React.createClass({
   render: function() {
     console.log('PROPS IN APP', this.props);
 
-    const { dispatch, template, rules, application, template } = this.props;
+    const { dispatch, template, rules, application, eventName, template } = this.props;
     const actions = bindActionCreators(RuleActions, dispatch);
 
     var ruleElements = rules.map(function(rule, i) {
@@ -28,6 +29,7 @@ var App = React.createClass({
     return (
       <div>
         <ApplicationSelect application={application} actions={actions} />
+        <EventSelect eventName={eventName} actions={actions} />
         <NotificationTemplate template={template} actions={actions} />
         <DebugOutput rules={rules} />
         {ruleElements}
