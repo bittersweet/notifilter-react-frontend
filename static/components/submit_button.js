@@ -11,7 +11,7 @@ var SubmitButton = React.createClass({
 
     console.log('state at time of submit is: ', store.getState());
 
-    const { template, rules } = store.getState();
+    const { application, eventName, template, rules } = store.getState();
 
     var id = window.notifier.id;
     var url = `http://localhost:3002/receive/${id}.json`;
@@ -23,6 +23,8 @@ var SubmitButton = React.createClass({
       },
       body: JSON.stringify({
         notifier: {
+          application: application,
+          event_name: eventName,
           template: template,
           rules: rules,
         }
