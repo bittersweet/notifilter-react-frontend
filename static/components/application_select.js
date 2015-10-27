@@ -17,9 +17,12 @@ var ApplicationSelect = React.createClass({
     });
 
     return (
-      <select ref="application" value={application} onChange={this.updateApplication}>
+      <div>
+      <label htmlFor="application">Application</label>
+      <select id="application" ref="application" value={application} onChange={this.updateApplication}>
         {keys}
       </select>
+      </div>
     );
   }
 });

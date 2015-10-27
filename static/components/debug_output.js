@@ -8,7 +8,7 @@ var DebugOutput = React.createClass({
     var text = JSON.stringify(rules, null, 2);
     return (
       <div>
-        <textarea ref="rulesOutput" readOnly={'true'} rows="15" cols="60" value={text} />
+        <textarea readOnly={'true'} rows="15" cols="60" value={text} />
       </div>
     );
   }

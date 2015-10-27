@@ -16,8 +16,9 @@ var NotificationTemplate = React.createClass({
 
     return (
       <div className="rule">
-        <textarea value={template} rows="5" ref="template" onChange={this.handleChange}>
-       </textarea>
+        <label htmlFor="template">Template</label>
+        <textarea id="template" value={template} rows="5" ref="template" onChange={this.handleChange}>
+        </textarea>
       </div>
     );
   }
