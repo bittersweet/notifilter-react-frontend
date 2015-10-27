@@ -17,9 +17,12 @@ var EventSelect = React.createClass({
     });
 
     return (
-      <select ref="eventName" value={eventName} onChange={this.updateEvent}>
-        {eventNames}
-      </select>
+      <div>
+        <label htmlFor="event_name">Event Name</label>
+        <select id="event_name" ref="eventName" value={eventName} onChange={this.updateEvent}>
+          {eventNames}
+        </select>
+      </div>
     );
   }
 });
