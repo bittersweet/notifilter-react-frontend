@@ -22,7 +22,7 @@ function notifier(state = {template: 'templ', rules: []}, action) {
 
   case 'REMOVE_RULE':
     return Object.assign({}, state, {
-      rules: [state.rules.slice(0, action.index),
+      rules: [...state.rules.slice(0, action.index),
         ...state.rules.slice(action.index + 1)
       ]
     });
