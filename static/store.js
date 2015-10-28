@@ -42,6 +42,11 @@ function notifier(state = {template: 'templ', rules: []}, action) {
        eventName: action.eventName
      });
 
+   case 'UPDATE_TARGET':
+     return Object.assign({}, state, {
+         target: action.target
+       });
+
   default:
     console.log("default state", state);
     return state;
