@@ -11,13 +11,14 @@ function notifier(state = {template: 'templ', rules: []}, action) {
     });
 
   case 'ADD_RULE':
+    const defaultRule = {
+      key: '',
+      type: '',
+      setting: '',
+      value: '',
+    };
     return Object.assign({}, state, {
-      rules: [...state.rules, {
-        key: '',
-        type: '',
-        setting: '',
-        value: '',
-      }]
+      rules: [...state.rules, defaultRule]
     });
 
   case 'REMOVE_RULE':
