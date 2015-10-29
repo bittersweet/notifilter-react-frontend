@@ -6,15 +6,20 @@ import fetch from 'isomorphic-fetch';
 import store from './../store';
 
 var SubmitButton = React.createClass({
+  getInitialState: function() {
+    return {
+      loading: false,
+    }
+  },
+
   handleClick: function(event) {
     event.preventDefault();
-
-    console.log('state at time of submit is: ', store.getState());
+    this.setState({ loading: true });
 
     const { application, eventName, target, template, rules } = store.getState();
 
     var id = window.notifier.id;
-    var url = `http://localhost:3002/receive/${id}.json`;
+    var url = `http://localhost:3002/notifiers/${id}.json`;
     fetch(url, {
       method: 'post',
       headers: {
@@ -31,15 +36,23 @@ var SubmitButton = React.createClass({
         }
       })
     })
-      .then(response => response.json()) // can be removed?
-      .then(json => console.log(json))
+      .then(() => {
+        this.setState({ loading: false });
+      })
       .catch(exception => console.log('POST failed:', exception));
   },
 
   render: function() {
+    const { loading } = this.state;
+    let text = 'Submit';
+    if (loading) {
+      text = 'Loading...';
+    }
     return (
       <div className="submit">
-        <button type="submit" onClick={this.handleClick}>Submit</button>
+        <button type="submit" onClick={this.handleClick} disabled={loading} >
+          {text}
+        </button>
       </div>
     );
   }
