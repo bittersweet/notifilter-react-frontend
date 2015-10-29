@@ -21,11 +21,15 @@ var App = React.createClass({
     const { dispatch, template, rules, application, eventName, target, template } = this.props;
     const actions = bindActionCreators(RuleActions, dispatch);
 
-    var ruleElements = rules.map(function(rule, i) {
-      return (
-        <RuleForm key={i} rule={rule} index={i} actions={actions} />
-      )
-    });
+    if (Object.keys(rules).length == 0) {
+      var ruleElements = null;
+    } else {
+      var ruleElements = rules.map(function(rule, i) {
+        return (
+          <RuleForm key={i} rule={rule} index={i} actions={actions} />
+        )
+      });
+    }
 
     return (
       <div>
