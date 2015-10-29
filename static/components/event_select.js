@@ -9,7 +9,7 @@ var EventSelect = React.createClass({
   },
 
   render: function() {
-    const { actions, eventName } = this.props;
+    const { eventName } = this.props;
     const eventNames = window.options.eventNames.map(function(eventName, i) {
       return (
         <option key={i} value={eventName}>{eventName}</option>

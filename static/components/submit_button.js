@@ -37,7 +37,6 @@ var SubmitButton = React.createClass({
   },
 
   render: function() {
-    const { actions, index } = this.props;
     return (
       <div className="submit">
         <button type="submit" onClick={this.handleClick}>Submit</button>

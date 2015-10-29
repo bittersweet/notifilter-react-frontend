@@ -9,7 +9,7 @@ var ApplicationSelect = React.createClass({
   },
 
   render: function() {
-    const { actions, application } = this.props;
+    const { application } = this.props;
     const keys = window.options.applications.map(function(app, i) {
       return (
         <option key={i} value={app}>{app}</option>

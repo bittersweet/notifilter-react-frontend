@@ -9,7 +9,7 @@ var TargetField = React.createClass({
   },
 
   render: function() {
-    const { actions, target } = this.props;
+    const { target } = this.props;
 
     return (
       <div>
