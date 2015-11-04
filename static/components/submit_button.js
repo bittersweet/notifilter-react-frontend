@@ -19,7 +19,7 @@ var SubmitButton = React.createClass({
     const { application, eventName, target, template, rules } = store.getState();
 
     var id = window.notifier.id;
-    var url = `http://localhost:3002/notifiers/${id}.json`;
+    var url = `/notifiers/${id}.json`;
     fetch(url, {
       method: 'post',
       headers: {
