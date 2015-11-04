@@ -39,7 +39,10 @@ var SubmitButton = React.createClass({
       .then(() => {
         this.setState({ loading: false });
       })
-      .catch(exception => console.log('POST failed:', exception));
+      .catch(exception => {
+        console.log('POST failed:', exception)
+        this.setState({ loading: false });
+      })
   },
 
   render: function() {
