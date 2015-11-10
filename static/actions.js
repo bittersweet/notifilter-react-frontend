@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 /*
  * action types
  */
@@ -8,6 +10,8 @@ export const UPDATE_TEMPLATE = 'UPDATE_TEMPLATE';
 export const UPDATE_APPLICATION = 'UPDATE_APPLICATION';
 export const UPDATE_EVENTNAME = 'UPDATE_EVENTNAME';
 export const UPDATE_TARGET = 'UPDATE_TARGET';
+export const PREVIEW_TEMPLATE = 'PREVIEW_TEMPLATE';
+export const UPDATE_PREVIEW_TEMPLATE = 'UPDATE_PREVIEW_TEMPLATE';
 // TODO -- figure out how this stuff works, lol.
 
 /*
@@ -36,4 +40,37 @@ export function updateEventName(eventName) {
 
 export function updateTarget(target) {
   return { type: UPDATE_TARGET, target: target };
+}
+
+export function updatePreviewTemplate(preview) {
+  console.log('updatePreviewTemplate called with', preview);
+  return { type: UPDATE_PREVIEW_TEMPLATE, preview: preview }
+}
+
+export function fetchPreviewTemplate(application, eventName, template) {
+  const url = '/notifiers/preview.json';
+  fetch(url, {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      application: application,
+      event_name: eventName,
+      template: template,
+    })
+  })
+    .then(response => response.json())
+    .then(function(json) {
+        console.log(json);
+        console.log(json.result);
+        updatePreviewTemplate(json.result);
+
+        return { type: UPDATE_PREVIEW_TEMPLATE, preview: json.result }
+    })
+    .catch(exception => {
+      console.log('POST to preview failed:', exception)
+    })
+  // return { type: PREVIEW_TEMPLATE, application: application, eventName: eventName, template: template };
 }

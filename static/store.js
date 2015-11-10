@@ -30,23 +30,37 @@ function notifier(state = {template: 'templ', rules: []}, action) {
 
   case 'UPDATE_TEMPLATE':
     return Object.assign({}, state, {
-        template: action.template
-      });
+      template: action.template
+    });
 
   case 'UPDATE_APPLICATION':
     return Object.assign({}, state, {
-        application: action.application
-      });
+      application: action.application
+    });
 
   case 'UPDATE_EVENTNAME':
-   return Object.assign({}, state, {
-       eventName: action.eventName
-     });
+    return Object.assign({}, state, {
+      eventName: action.eventName
+    });
 
-   case 'UPDATE_TARGET':
-     return Object.assign({}, state, {
-         target: action.target
-       });
+  case 'UPDATE_TARGET':
+    return Object.assign({}, state, {
+      target: action.target
+    });
+
+  case 'PREVIEW_TEMPLATE':
+    console.log('preview template store method');
+    console.log(action);
+    return Object.assign({}, state, {
+      preview: ''
+    });
+
+  case 'UPDATE_PREVIEW_TEMPLATE':
+    console.log('update preview template method called');
+    console.log(action);
+    return Object.assign({}, state, {
+      preview: action.preview
+    });
 
   default:
     console.log("default state", state);
