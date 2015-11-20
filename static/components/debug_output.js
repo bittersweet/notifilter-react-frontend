@@ -4,7 +4,7 @@ import store from './../store';
 
 var DebugOutput = React.createClass({
   render: function() {
-    const { rules, preview } = this.props;
+    const { rows, className, rules, preview } = this.props;
     if (rules) {
       var text = JSON.stringify(rules, null, 2);
     } else {
@@ -12,8 +12,8 @@ var DebugOutput = React.createClass({
       var text = preview;
     }
     return (
-      <div>
-        <textarea readOnly={'true'} rows="15" cols="60" value={text} disabled />
+      <div className={className}>
+        <textarea readOnly={'true'} rows={rows} value={text} disabled />
       </div>
     );
   }

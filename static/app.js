@@ -38,9 +38,9 @@ var App = React.createClass({
         <EventSelect eventName={eventName} actions={actions} />
         <TargetField target={target} actions={actions} />
         <NotificationTemplate template={template} actions={actions} />
+        <DebugOutput className={'templatePreview'} rows={5} preview={preview} />
         <PreviewButton actions={actions} />
-        <DebugOutput preview={preview} />
-        <DebugOutput rules={rules} />
+        <DebugOutput className={'rules'} rows={15} rules={rules} />
         {ruleElements}
         <AddRule actions={actions} />
         <SubmitButton />
