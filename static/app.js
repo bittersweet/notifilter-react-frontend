@@ -39,7 +39,7 @@ var App = React.createClass({
         <TargetField target={target} actions={actions} />
         <NotificationTemplate template={template} actions={actions} />
         <PreviewButton actions={actions} />
-        preview: {preview}
+        <DebugOutput preview={preview} />
         <DebugOutput rules={rules} />
         {ruleElements}
         <AddRule actions={actions} />

@@ -80,12 +80,8 @@ const createStoreWithMiddleware = applyMiddleware(
   loggerMiddleware // neat middleware that logs actions
 )(createStore);
 
-
 const store = createStoreWithMiddleware(notifier, window.notifier);
 
-store.dispatch(fetchPosts('one', 'test', '{{ template }}')).then(() =>
-                                           console.log(store.getState())
-                                          )
 store.subscribe(() =>
   console.log('subscribe', store.getState())
 );

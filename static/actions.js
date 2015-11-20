@@ -69,9 +69,10 @@ export function fetchPosts(application, eventName, template) {
       body: payload
     })
       .then(response => response.json())
-      .then(json =>
+      .then(json => {
           console.log(json)
-      )
+          dispatch(updatePreviewTemplate(json.result))
+      })
       .catch(exception => {
         console.log('POST to preview failed:', exception)
       });
