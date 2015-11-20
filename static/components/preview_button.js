@@ -11,7 +11,7 @@ var PreviewButton = React.createClass({
     const { actions } = this.props;
 
     const { application, eventName, template } = store.getState();
-    actions.fetchPreviewTemplate(application, eventName, template);
+    actions.fetchPosts(application, eventName, template);
   },
 
   render: function() {

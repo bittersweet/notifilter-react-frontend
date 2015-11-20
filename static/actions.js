@@ -47,6 +47,37 @@ export function updatePreviewTemplate(preview) {
   return { type: UPDATE_PREVIEW_TEMPLATE, preview: preview }
 }
 
+export function fetchPosts(application, eventName, template) {
+  console.log('first', application, eventName, template);
+  return function(dispatch) {
+    console.log('second', application, eventName, template);
+    //dispatch(updatePreviewTemplate(obj))
+
+    const payload = JSON.stringify({
+      application: application,
+      event_name: eventName,
+      template: template,
+    });
+    console.log("POSTING ", payload);
+    const url = '/notifiers/preview.json';
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: payload
+    })
+      .then(response => response.json())
+      .then(json =>
+          console.log(json)
+      )
+      .catch(exception => {
+        console.log('POST to preview failed:', exception)
+      });
+  }
+}
+
 export function fetchPreviewTemplate(application, eventName, template) {
   const url = '/notifiers/preview.json';
   fetch(url, {

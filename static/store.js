@@ -1,4 +1,9 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+
+import { fetchPosts } from './actions'
 
 function notifier(state = {template: 'templ', rules: []}, action) {
   switch (action.type) {
@@ -68,7 +73,19 @@ function notifier(state = {template: 'templ', rules: []}, action) {
   }
 }
 
-let store = createStore(notifier, window.notifier);
+const loggerMiddleware = createLogger();
+
+const createStoreWithMiddleware = applyMiddleware(
+  thunkMiddleware, // lets us dispatch() functions
+  loggerMiddleware // neat middleware that logs actions
+)(createStore);
+
+
+const store = createStoreWithMiddleware(notifier, window.notifier);
+
+store.dispatch(fetchPosts('one', 'test', '{{ template }}')).then(() =>
+                                           console.log(store.getState())
+                                          )
 store.subscribe(() =>
   console.log('subscribe', store.getState())
 );
