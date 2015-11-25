@@ -7,7 +7,12 @@ var NotificationTemplate = React.createClass({
     event.preventDefault();
     const template = this.refs.template.value;
     const { actions } = this.props;
+
     actions.updateTemplate(template);
+
+    // Update while typing
+    const { application, eventName } = store.getState();
+    actions.fetchPosts(application, eventName, template);
   },
 
   render: function() {
